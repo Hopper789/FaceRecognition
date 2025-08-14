@@ -54,7 +54,6 @@ picture_folder = path + '/celeba/celebA_imgs'
 train_loader = DataLoader(PictureDataset(picture_folder, train_df, transform_train), batch_size = batch_size, shuffle= True, num_workers = 4, pin_memory=True, prefetch_factor=2)
 test_loader  = DataLoader(PictureDataset(picture_folder, test_df, transform_test), batch_size = batch_size, shuffle= False, num_workers = 4, pin_memory=True, prefetch_factor=2)
 
-print("Load model...")
 model = FaceRecognitionModel()
 model.init(ArcFaceLoss(
         num_classes=500,
@@ -82,7 +81,6 @@ def main(test_loader = None, train_loader = None):
     graphics(train_acc, test_acc, train_loss, test_loss, train_f1, test_f1)
 
 def train_loop(model, train_loader, optimizer, criterion_arc, criterion_triplet, device):
-    print("Training...")
     cnt_overfitting, max_cnt_overfitting = 0, 5
     train_loss, test_loss, train_acc = [], [], []
     test_acc, test_f1, train_f1 = [], [0], []
@@ -172,6 +170,4 @@ def graphics(train_acc, test_acc, train_loss, test_loss, train_f1, test_f1):
     plt.savefig('logs/F1_score.png')
 
 if __name__ == "__main__":
-    print("Tr model...")
     main(test_loader, train_loader)
-    print("End model")

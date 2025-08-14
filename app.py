@@ -33,7 +33,7 @@ def load_model(path = "model/model.pth"):
     model.eval()
     return model
 
-st.title("Классификация лиц на основе ResNet18")
+st.title("Классификация лиц на основе facenet")
 st.write("Загрузите изображение, и модель определит класс")
 uploaded_file = st.file_uploader("Выберите изображение...", type=["jpg", "png", "jpeg"])
 
