@@ -29,7 +29,10 @@ st.markdown(
 def load_model(path = "model/model.pth"):
     model = FaceRecognitionModel()
     model.init(ArcFaceLoss(500, 512), 512)
-    model.load_state_dict(torch.load(path)['model'])
+    if torch.cuda.is_available() == 'cpu':
+        model.load_state_dict(torch.load(path, map_location=torch.device('cpu'))['model'])
+    else:
+        model.load_state_dict(torch.load(path, map_location=torch.device('cuda'))['model'])
     model.eval()
     return model
 
