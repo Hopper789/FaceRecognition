@@ -11,18 +11,18 @@
 Это ускорит обучение модели засчёт приведения картинок к одному формату, где лицо будет примерно в центре изображения и линия, соединяющая глаза, будет горизонтальной.
 ### Этап 3
 Использована предобученная модель ```Facenet``` на датасете ```vggface2```. Также добавлены изменения в общую архитектуру модели. Модель выглядит так:
-![Model architecture](pictures/model_architecture.png)
-Дополнительные линейные слои с dropout не допустили сильного преробучения. Нормализация в свою очередь нужна была для соответсвия формуле ```Arcface loss```. Для лучшего разделения классов был добавлен ```Triplet loss```.
-```Loss = 0.3 ⋅ Triplet + 0.7 ⋅ Arcface```
-Датасет - [celeba 500](https://www.kaggle.com/datasets/wannad1e/celeba-500-label-folders). Для более быстрой сходимости и из-за небольшого размера датасета, train часть была объединена с validation и модель обучалась на этих данных.
+![Model architecture](pictures/model_architecture.png "Model architecture")
+Дополнительные линейные слои с dropout не допустили сильного преробучения. Нормализация в свою очередь нужна была для соответсвия формуле ```Arcface loss```. Для лучшего разделения классов был добавлен ```Triplet loss```.  
+```Loss = 0.3 ⋅ Triplet + 0.7 ⋅ Arcface```  
+Датасет - [celeba 500](https://www.kaggle.com/datasets/wannad1e/celeba-500-label-folders).
+Для более быстрой сходимости и из-за небольшого размера датасета, train часть была объединена с validation и модель обучалась на этих данных.
 
 На данный момент реализован 3 пункт пайплайна. Также в планах добавить возможность включения новых лиц и дообучение текущей модели.
 
 ## Резльтат обучения
-3 картинки
-![Loss](logs/loss.png)
-![F1 score](logs/F1_score.png)
-![Triplet accuracy](logs/triplet_accuracy.png)
+![Loss](logs/loss.png "loss")
+![F1 score](logs/F1_score.png "F1")
+![Triplet accuracy](logs/triplet_accuracy.png "triplet accuracy")
 По графикам видно, что модель достигла 80% F1-score на тестовых изображениях.
 Готовая модель, которую можно потыкать находится [тут](https://facerecognition-qmrhah7bcdxzgdwvozu4er.streamlit.app/). Для отправки используйте формат изображений ```.jpg```.
 
