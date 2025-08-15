@@ -23,7 +23,7 @@
 ## Результаты обучения
 ![Loss](logs/loss.png)
 ![F1 score](logs/F1_score.png)
-![Triplet accuracy](logs/triplet_accuracy.png)
+![Triplet accuracy](logs/triplet_accuracy.png)  
 По графикам видно, что модель достигла 80% F1-score на тестовых изображениях.  
 Готовая модель, которую можно потыкать находится [тут](https://facerecognition-qmrhah7bcdxzgdwvozu4er.streamlit.app/). Для отправки используйте формат изображений ```.jpg```.
 
